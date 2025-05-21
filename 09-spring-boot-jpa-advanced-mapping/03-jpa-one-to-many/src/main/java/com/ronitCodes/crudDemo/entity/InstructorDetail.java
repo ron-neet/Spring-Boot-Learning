@@ -6,15 +6,18 @@ import jakarta.persistence.*;
 @Table(name="instructor_detail")
 public class InstructorDetail {
 
-    // annotate the Class as an Entity and map to DB table
+    // annotate the class as an entity and map to db table
 
-    // Define the fields
+    // define the fields
 
-    // Annotate the fields with db columns names
+    // annotate the fields with db column names
 
-    // Create Constructor
+    // create constructors
 
-    // Generate Getter / setter Methods
+    // generate getter/setter methods
+
+    // generate toString() method
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -26,24 +29,18 @@ public class InstructorDetail {
     @Column(name="hobby")
     private String hobby;
 
-    @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+    // add @OneToOne annotation
+    @OneToOne(mappedBy = "instructorDetail",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Instructor instructor;
 
     public InstructorDetail() {
 
     }
 
-    public InstructorDetail(String youtubeChannel, String hobby){
+    public InstructorDetail(String youtubeChannel, String hobby) {
         this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
-    }
-
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
     }
 
     public int getId() {
@@ -70,6 +67,14 @@ public class InstructorDetail {
         this.hobby = hobby;
     }
 
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
     @Override
     public String toString() {
         return "InstructorDetail{" +
@@ -79,9 +84,3 @@ public class InstructorDetail {
                 '}';
     }
 }
-
-
-
-
-
-
