@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+<h3>Student Registration Form</h3>
+
+<form th:action="@{/processForm}" th:object="${student}" method="post">
+
+    <label for="firstName">First name:</label>
+    <input type="text" th:field="*{firstName}" id="firstName" />
+    <br><br>
+
+    <label for="lastName">Last name:</label>
+    <input type="text" th:field="*{lastName}" id="lastName" />
+    <br><br>
+
+    <label for="country">Country:</label>
+    <select th:field="*{country}" id="country">
+        <option value="">--Select--</option>
+        <option th:each="tempCountry : ${countries}"
+                th:value="${tempCountry}"
+                th:text="${tempCountry}">
+        </option>
+    </select>
+    <br><br>
+
+    <label for="languages"> Favorite Language </label>
+    <input type="radio" th:field="*{favoriteLanguage}" id="languages"
+           th:each="tempLang : ${languages}"
+           th:value="${tempLang}"
+           th:text="${tempLang}">
+    <br><br>
+
+
+        <input type="checkbox" th:field="*{favSystem}"
+               th:each="tempSys : ${system}"
+               th:value="${tempSys}"
+               th:text="${tempSys}"/>
+
+
+    <br><br>
+
+    <br><br>
+
+
+<!--    <label> Favorite System </label><br>-->
+<!--    <input type="checkbox" th:field="*{favSystem}" id="Linux" th:value="Linux" />-->
+<!--    <label for="Linux"> Linux </label><br>-->
+<!--    <input type="checkbox" th:field="*{favSystem}" id="MacOS" th:value="MacOS" />-->
+<!--    <label for="MacOS"> MacOS </label><br>-->
+<!--    <input type="checkbox" th:field="*{favSystem}" id="Windows" th:value="'Microsoft Windows'" />-->
+<!--    <label for="Windows"> Microsoft Windows</label>-->
+<!--    <br><br>-->
+
+
+    <!--    <label>Favorite Programming Language:</label><br>-->
+<!--    <input type="radio" th:field="*{favoriteLanguage}" value="Go" id="go" />-->
+<!--    <label for="go">Go</label><br>-->
+
+<!--    <input type="radio" th:field="*{favoriteLanguage}" value="Java" id="java" />-->
+<!--    <label for="java">Java</label><br>-->
+
+<!--    <input type="radio" th:field="*{favoriteLanguage}" value="Python" id="python" />-->
+<!--    <label for="python">Python</label><br><br>-->
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+</body>
+</html>

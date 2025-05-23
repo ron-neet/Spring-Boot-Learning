@@ -14,6 +14,30 @@ public class AccountDAOImpl implements AccountDAO {
     private String accountNumber;
 
     @Override
+    public List<Account> findAccount(boolean flag){
+
+        // For academic purpose Stimulate an exception
+
+        if(flag){
+            throw new RuntimeException("Exception Stimulated");
+        }
+        List<Account> myAccount = new ArrayList<>();
+
+        // Create a sample Account
+        Account tempAccount = new Account("Codez", "178122121");
+        Account tempAccount1 = new Account("HiCodez", "1547811");
+        Account tempAccount2 = new Account("RECodez", "15441");
+
+        // Add them to our Account List
+        myAccount.add(tempAccount);
+        myAccount.add(tempAccount1);
+        myAccount.add(tempAccount2);
+
+        return myAccount;
+
+    }
+
+    @Override
     public void addAccount(Account theAccount, boolean vipFlag){
 
         System.out.println(getClass()+"Account Added Successfully");
@@ -49,18 +73,20 @@ public class AccountDAOImpl implements AccountDAO {
     @Override
     public List<Account> findAccount(){
 
-        List<Account> myAccount = new ArrayList<>();
+//        List<Account> myAccount = new ArrayList<>();
+//
+//        // Create a sample Account
+//        Account tempAccount = new Account("Codez", "178122121");
+//        Account tempAccount1 = new Account("HiCodez", "1547811");
+//        Account tempAccount2 = new Account("RECodez", "15441");
+//
+//        // Add them to our Account List
+//        myAccount.add(tempAccount);
+//        myAccount.add(tempAccount1);
+//        myAccount.add(tempAccount2);
+//
+//        return myAccount;
 
-        // Create a sample Account
-        Account tempAccount = new Account("Codez", "178122121");
-        Account tempAccount1 = new Account("HiCodez", "1547811");
-        Account tempAccount2 = new Account("RECodez", "15441");
-
-        // Add them to our Account List
-        myAccount.add(tempAccount);
-        myAccount.add(tempAccount1);
-        myAccount.add(tempAccount2);
-
-        return myAccount;
+        return findAccount(false);
     }
 }

@@ -20,4 +20,6 @@ boolean addSillyMethod();
 
     List<Account> findAccount();
 
+    List<Account> findAccount(boolean flag);
+
 }
